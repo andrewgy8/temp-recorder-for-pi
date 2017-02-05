@@ -10,6 +10,12 @@ import os
 import time
 import json
 import config
+import passwords
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
 
 
 class RecordTemp:
@@ -44,7 +50,46 @@ class RecordTemp:
             time.sleep(config.time_interval)
 
 
-record = RecordTemp(30)
-record.engine()
+class EmailAlerter:
+
+    def __init__(self):
+        self.msg = MIMEMultipart()
+
+    def engine(self):
+        self.construct_header()
+        self.construct_body()
+        self.send()
+
+    def construct_header(self):
+        self.msg['From'] = config.from_addr
+        self.msg['To'] = config.toaddr
+        self.msg['Subject'] = "Damn straight skippy"
+
+    def construct_body(self):
+        body = "Eva is the most beautiful girl in the world"
+
+        self.msg.attach(MIMEText(body, 'plain'))
+
+    def attachment(self):
+        attachment = open(config.path_of_file, "rb")
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload(attachment.read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition', "attachment; filename= %s" % config.filename)
+        self.msg.attach(part)
+
+    def send(self):
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(config.from_addr, passwords.your_password)
+        text = self.msg.as_string()
+        server.sendmail(config.from_addr, config.toaddr, text)
+        server.quit()
+
+# record = RecordTemp(30)
+# record.engine()
 
 
+if __name__ == '__main__':
+    email_alert = EmailAlerter()
+    email_alert.engine()
