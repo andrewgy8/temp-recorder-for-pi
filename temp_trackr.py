@@ -9,6 +9,7 @@
 import os
 import time
 import json
+import config
 
 
 class RecordTemp:
@@ -31,7 +32,7 @@ class RecordTemp:
         return json.dumps(output)
 
     def output_temp_into_file(self):
-        f = open("temperatures.txt", "a")
+        f = open(config.output_file_name, "a+")
         f.write(self.format_output())
         f.write("\n")
         f.close()
@@ -40,7 +41,10 @@ class RecordTemp:
         while True:
             self.get_temp()
             self.output_temp_into_file()
-            time.sleep(10)
+            time.sleep(config.time_interval)
+
 
 record = RecordTemp(30)
 record.engine()
+
+
