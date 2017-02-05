@@ -1,6 +1,6 @@
 """
 1) Run `vcgencmd measure_temp`
-2) Record output as csv
+2) Record output as json {temp: int, time_stamp: number[]}
 3) tweet alert to user in config.txt
 4) Run in time interaval set by config.txt
 
@@ -24,7 +24,11 @@ class RecordTemp:
         return str(self.temp)
 
     def format_output(self):
-        return json.dumps([self.get_temp(), time.localtime()])
+        output = dict()
+
+        output['temp'] = self.get_temp()
+        output['time_stamp'] = time.localtime()
+        return json.dumps(output)
 
     def output_temp_into_file(self):
         f = open("temperatures.txt", "a")
