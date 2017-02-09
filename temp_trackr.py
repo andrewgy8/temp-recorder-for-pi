@@ -71,7 +71,7 @@ class EmailAlerter:
 
     def construct_header(self):
         self.msg['From'] = config.from_addr
-        self.msg['To'] = config.toaddr
+        self.msg['To'] = config.to_addr
         self.msg['Subject'] = "Damn straight skippy"
 
     def construct_body(self):
@@ -92,7 +92,7 @@ class EmailAlerter:
         server.starttls()
         server.login(config.from_addr, passwords.your_password)
         text = self.msg.as_string()
-        server.sendmail(config.from_addr, config.toaddr, text)
+        server.sendmail(config.from_addr, config.to_addr, text)
         server.quit()
 
 
