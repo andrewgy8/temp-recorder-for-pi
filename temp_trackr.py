@@ -12,6 +12,7 @@ import json
 import config
 import passwords
 import smtplib
+import subprocess
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
@@ -20,20 +21,27 @@ from email import encoders
 
 class RecordTemp:
 
-    def __init__(self, temp):
+    def __init__(self, temp=None):
         self.temp = temp
+	
+    def get_system_temp(self):
+        p = subprocess.Popen(["vcgencmd", "measure_temp"], 
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+        self.temp, err = p.communicate()
 
-    @staticmethod
-    def execute_record_cmd():
-        os.system("vcgencmd measure_temp")
-
+    def format_temp_std_out(self):
+        # "b\"temp=38.6'C\\n\""
+        self.temp = str(self.temp)
+        self.temp = format(self.temp.replace("\b\\", '').replace("C\\n", "").replace("temp=", "").replace('"', '').replace('b', '').replace("'", ""))
+        
     def get_temp(self):
-        return str(self.temp)
+        return self.temp
 
     def format_output(self):
         output = dict()
 
-        output['temp'] = self.get_temp()
+        output['temp'] = str(self.get_temp())
         output['time_stamp'] = time.localtime()
         return json.dumps(output)
 
@@ -45,7 +53,8 @@ class RecordTemp:
 
     def engine(self):
         while True:
-            self.get_temp()
+            self.get_system_temp()
+            self.format_temp_std_out()
             self.output_temp_into_file()
             time.sleep(config.time_interval)
 
@@ -66,7 +75,7 @@ class EmailAlerter:
         self.msg['Subject'] = "Damn straight skippy"
 
     def construct_body(self):
-        body = "Eva is the most beautiful girl in the world"
+        body = "Your raspberry pi is at a critical temperature"
 
         self.msg.attach(MIMEText(body, 'plain'))
 
@@ -86,6 +95,4 @@ class EmailAlerter:
         server.sendmail(config.from_addr, config.to_addr, text)
         server.quit()
 
-# record = RecordTemp(30)
-# record.engine()
 
