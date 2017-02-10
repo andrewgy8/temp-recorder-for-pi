@@ -89,7 +89,3 @@ class EmailAlerter:
 # record = RecordTemp(30)
 # record.engine()
 
-
-if __name__ == '__main__':
-    email_alert = EmailAlerter()
-    email_alert.engine()
