@@ -23,9 +23,9 @@ class RecordTemp:
 
     def __init__(self, temp=None):
         self.temp = temp
-	
+
     def get_system_temp(self):
-        p = subprocess.Popen(["vcgencmd", "measure_temp"], 
+        p = subprocess.Popen(["vcgencmd", "measure_temp"],
                                 stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
         self.temp, err = p.communicate()
