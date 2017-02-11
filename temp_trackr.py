@@ -34,7 +34,8 @@ class RecordTemp:
         # "b\"temp=38.6'C\\n\""
         self.temp = str(self.temp)
         self.temp = format(self.temp.replace("\b\\", '').replace("C\\n", "").replace("temp=", "").replace('"', '').replace('b', '').replace("'", ""))
-        
+        return self.temp
+
     def get_temp(self):
         return self.temp
 
