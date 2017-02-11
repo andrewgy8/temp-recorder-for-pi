@@ -1,1 +1,0 @@
-from temp_trackr import *
