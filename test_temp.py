@@ -27,4 +27,5 @@ def test_format_temp_stdout():
     temp_output = b"temp=38.6'C\n"
 
     temp = RecordTemp(temp_output).format_temp_std_out()
-    assert temp == '38.6'
+    assert temp == 38.6
+

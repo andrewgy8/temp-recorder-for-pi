@@ -8,4 +8,4 @@ to_addr = "andrewgy08@me.com"
 
 # Attachment configs
 filename = "NAME OF THE FILE WITH ITS EXTENSION"
-path_of_file = "PATH OF THE FILE"
+path_of_file = "./temperature.txt"

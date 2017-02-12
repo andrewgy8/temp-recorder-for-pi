@@ -4,10 +4,13 @@
 3) tweet alert to user in config.txt
 4) Run in time interaval set by config.txt
 
+Data: {time: DateTime, temp: str, email_sent: bool}
+
 """
 
 import os
 import time
+import datetime
 import json
 import config
 import passwords
@@ -21,8 +24,9 @@ from email import encoders
 
 class RecordTemp:
 
-    def __init__(self, temp=None):
+    def __init__(self, testing, temp=None, ):
         self.temp = temp
+        self.testing = testing
 
     def get_system_temp(self):
         p = subprocess.Popen(["vcgencmd", "measure_temp"],
@@ -34,16 +38,23 @@ class RecordTemp:
         # "b\"temp=38.6'C\\n\""
         self.temp = str(self.temp)
         self.temp = format(self.temp.replace("b\"temp=", "").replace("'C\\n", "").replace('"', ""))
-        return self.temp
+        return float(self.temp)
 
     def get_temp(self):
         return self.temp
 
+
+
     def format_output(self):
         output = dict()
-
+        date_handler = lambda obj: (
+            obj.isoformat()
+            if isinstance(obj, datetime.datetime)
+               or isinstance(obj, datetime.date)
+            else None
+        )
         output['temp'] = str(self.get_temp())
-        output['time_stamp'] = time.localtime()
+        output['time_stamp'] = str(datetime.datetime.now())
         return json.dumps(output)
 
     def output_temp_into_file(self):
@@ -53,11 +64,14 @@ class RecordTemp:
         f.close()
 
     def engine(self):
-        while True:
-            self.get_system_temp()
-            self.format_temp_std_out()
+        if not self.testing:
+            while True:
+                self.get_system_temp()
+                self.format_temp_std_out()
+                self.output_temp_into_file()
+                time.sleep(config.time_interval)
+        else:
             self.output_temp_into_file()
-            time.sleep(config.time_interval)
 
 
 class EmailAlerter:
@@ -96,4 +110,25 @@ class EmailAlerter:
         server.sendmail(config.from_addr, config.to_addr, text)
         server.quit()
 
+
+class FileScanner:
+
+    def __init__(self):
+        self.previous_entry = None
+        self.last_email_time = None
+        self.previous_check_time = None
+        self.current_time = datetime.datetime.now()
+
+    def get_last_entry_in_file(self):
+        with open(config.path_of_file) as f:
+            last_line = [i for i in f.read().split('\n') if i][-1]
+            self.previous_entry = json.loads(last_line)
+            self.previous_check_time = self.previous_entry["time_stamp"]
+
+    def compare_current_and_previous_sent_times(self):
+        time_delta = datetime.datetime.now() - datetime.datetime.strptime(self.previous_check_time, "%Y-%m-%d %H:%M:%S.%f")
+        print(time_delta)
+        # if  != self.current_time:
+        #
+        # else:
 
