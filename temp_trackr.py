@@ -110,7 +110,13 @@ class EmailAlerter:
 
 
 class FileScanner:
-
+    """
+    1) scan file for last line
+    2) extract data from last line
+    3) compare last email sent date
+    4) checkout data in data handler
+    5) if data handler returns issue with temp and email has not been sent, send an email
+    """
     def __init__(self):
         self.previous_entry = None
         self.last_email_time = None
@@ -128,7 +134,26 @@ class FileScanner:
         # print(time_delta)
         # print(datetime.timedelta(microseconds=100))
         if time_delta > datetime.timedelta(minutes=10):
-            print('it has been more than 15 min')
+            # check to see
+            EmailAlerter().engine()
         else:
             print('it has been less than 15 min')
 
+
+class DataHandler:
+    """
+    1) get the last recorded temp
+    2) if the temp is above a certain temp and no email has been sent, return a send email directive
+    3) if temp is above certain threshhold, and email has been sent, dont send email directive.
+    4) if temp is close to max temp, send email again.
+    5) if temp is at or above max temp, shut off pi,
+
+    """
+
+
+class CommandCenter:
+    """
+    shutdown:
+    from subprocess import call
+    call("sudo nohup shutdown -h now", shell=True)
+    """
