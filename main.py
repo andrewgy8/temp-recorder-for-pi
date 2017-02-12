@@ -1,4 +1,7 @@
-from temp_trackr import *
+from email_alerter import *
+from temp_recorded import *
+from file_scanner import *
+
 
 if __name__ == '__main__':
     # email_alert = EmailAlerter()
