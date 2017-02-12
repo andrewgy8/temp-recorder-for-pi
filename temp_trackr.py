@@ -43,8 +43,6 @@ class RecordTemp:
     def get_temp(self):
         return self.temp
 
-
-
     def format_output(self):
         output = dict()
         date_handler = lambda obj: (
@@ -127,8 +125,10 @@ class FileScanner:
 
     def compare_current_and_previous_sent_times(self):
         time_delta = datetime.datetime.now() - datetime.datetime.strptime(self.previous_check_time, "%Y-%m-%d %H:%M:%S.%f")
-        print(time_delta)
-        # if  != self.current_time:
-        #
-        # else:
+        # print(time_delta)
+        # print(datetime.timedelta(microseconds=100))
+        if time_delta > datetime.timedelta(minutes=10):
+            print('it has been more than 15 min')
+        else:
+            print('it has been less than 15 min')
 
