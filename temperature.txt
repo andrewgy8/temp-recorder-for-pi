@@ -62,3 +62,17 @@
 {"temp": "30", "time_stamp": "2017-02-12 20:53:10.590835"}
 {"temp": "30", "time_stamp": "2017-02-12 20:53:55.102191"}
 {"temp": "30", "time_stamp": "2017-02-12 20:54:10.527896"}
+{"temp": "None", "time_stamp": "2017-02-13 20:29:15.768132"}
+{"temp": "None", "time_stamp": "2017-02-13 20:29:55.770903", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:05.776288", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:15.781706", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:25.787874", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:35.795107", "last_email_sent_time": null}
+{"last_email_sent_time": null, "time_stamp": "2017-02-13 20:33:01.155214", "temp": "None"}
+{"last_email_sent_time": null, "time_stamp": "2017-02-13 20:33:11.162810", "temp": "None"}
+{"last_email_sent_time": null, "time_stamp": "2017-02-13 20:33:21.168913", "temp": "None"}
+{"time_stamp": "2017-02-13 20:33:38.112704", "temp": "None", "last_email_sent_time": null}
+{"time_stamp": "2017-02-13 20:34:21.915101", "temp": "None", "last_email_sent_time": null}
+{"temp": "50", "last_email_sent_time": null, "time_stamp": "2017-02-13 20:35:14.111381"}
+{"temp": "50", "last_email_sent_time": null, "time_stamp": "2017-02-13 20:35:26.945347"}
+{"temp": "50", "last_email_sent_time": null, "time_stamp": "2017-02-13 20:35:38.176601"}

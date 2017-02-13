@@ -4,7 +4,7 @@
 3) tweet alert to user in config.txt
 4) Run in time interaval set by config.txt
 
-Data: {time: DateTime, temp: str, email_sent: bool}
+Data: {record_time: DateTime, temp: str, email_sent: bool, last_email_sent_time: DateTime}
 
 """
 
@@ -17,9 +17,8 @@ import subprocess
 
 class RecordTemp:
 
-    def __init__(self, testing, temp=None, ):
+    def __init__(self, temp=None, ):
         self.temp = temp
-        self.testing = testing
 
     def get_system_temp(self):
         p = subprocess.Popen(["vcgencmd", "measure_temp"],
@@ -38,14 +37,10 @@ class RecordTemp:
 
     def format_output(self):
         output = dict()
-        date_handler = lambda obj: (
-            obj.isoformat()
-            if isinstance(obj, datetime.datetime)
-               or isinstance(obj, datetime.date)
-            else None
-        )
+
         output['temp'] = str(self.get_temp())
         output['time_stamp'] = str(datetime.datetime.now())
+        output['last_email_sent_time'] = None
         return json.dumps(output)
 
     def output_temp_into_file(self):
@@ -54,15 +49,15 @@ class RecordTemp:
         f.write("\n")
         f.close()
 
-    def engine(self):
-        if not self.testing:
-            while True:
-                self.get_system_temp()
-                self.format_temp_std_out()
-                self.output_temp_into_file()
-                time.sleep(config.time_interval)
-        else:
-            self.output_temp_into_file()
+    # def engine(self):
+    #     if not self.testing:
+    #         while True:
+    #             self.get_system_temp()
+    #             self.format_temp_std_out()
+    #             self.output_temp_into_file()
+    #             time.sleep(config.time_interval)
+    #     else:
+    #         self.output_temp_into_file()
 
 
 class CommandCenter:

@@ -10,8 +10,9 @@ import config
 
 class EmailAlerter:
 
-    def __init__(self):
+    def __init__(self, temp=None):
         self.msg = MIMEMultipart()
+        self.temp = temp
 
     def engine(self):
         self.construct_header()
@@ -24,7 +25,7 @@ class EmailAlerter:
         self.msg['Subject'] = "Damn straight skippy"
 
     def construct_body(self):
-        body = "Your raspberry pi is at a critical temperature"
+        body = "Your raspberry pi is at a critical temperature of %s" % self.temp
 
         self.msg.attach(MIMEText(body, 'plain'))
 

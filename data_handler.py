@@ -1,4 +1,4 @@
-
+import config
 
 
 class DataHandler:
@@ -10,3 +10,20 @@ class DataHandler:
     5) if temp is at or above max temp, shut off pi,
 
     """
+
+    def __init__(self, last_temp):
+        self.last_temp = last_temp
+
+    def is_temp_above_threshold(self):
+        if float(self.last_temp) > config.lower_threshold:
+            if float(self.last_temp) > config.higher_threshold:
+                return True
+            if float(self.last_temp) > config.lower_threshold:
+                return True
+
+        else:
+            print("Temp is normal")
+
+
+
+

@@ -9,3 +9,8 @@ to_addr = "andrewgy08@me.com"
 # Attachment configs
 filename = "NAME OF THE FILE WITH ITS EXTENSION"
 path_of_file = "./temperature.txt"
+
+lower_threshold = 40
+higher_threshold = 80
+
+Testing_Mode = True
