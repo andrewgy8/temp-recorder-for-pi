@@ -1,5 +1,5 @@
 import config
-
+import datetime
 
 class DataHandler:
     """
@@ -23,6 +23,12 @@ class DataHandler:
 
         else:
             print("Temp is normal")
+
+    @staticmethod
+    def new_sent_time_after_email(data_line):
+        data_line['last_email_sent_time'] = str(datetime.datetime.now())
+        return data_line
+
 
 
 

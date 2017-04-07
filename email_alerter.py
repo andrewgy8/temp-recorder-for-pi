@@ -15,14 +15,18 @@ class EmailAlerter:
         self.temp = temp
 
     def engine(self):
-        self.construct_header()
-        self.construct_body()
-        self.send()
+        try:
+            self.construct_header()
+            self.construct_body()
+            self.send()
+
+        except:
+            print("Email could not be sent")
 
     def construct_header(self):
         self.msg['From'] = config.from_addr
         self.msg['To'] = config.to_addr
-        self.msg['Subject'] = "Damn straight skippy"
+        self.msg['Subject'] = "Raspberry Pi Alert"
 
     def construct_body(self):
         body = "Your raspberry pi is at a critical temperature of %s" % self.temp
