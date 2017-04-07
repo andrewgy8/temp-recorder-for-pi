@@ -1,7 +1,8 @@
-import datetime
 import json
-from email_alerter import *
-from data_handler import *
+
+from src.data_handler import *
+from src.email_alerter import *
+
 
 class FileScanner:
     """
