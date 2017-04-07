@@ -37,3 +37,42 @@
 {"temp": "38.6", "time_stamp": [2017, 2, 9, 18, 43, 22, 3, 40, 0]}
 {"time_stamp": [2017, 2, 9, 18, 43, 33, 3, 40, 0], "temp": "38.6Cn"}
 {"temp": "38.6", "time_stamp": [2017, 2, 9, 18, 43, 40, 3, 40, 0]}
+{"time_stamp": [2017, 2, 12, 19, 28, 42, 6, 43, 0], "temp": "30"}
+{"time_stamp": [2017, 2, 12, 19, 28, 52, 6, 43, 0], "temp": "30"}
+{"time_stamp": [2017, 2, 12, 19, 29, 2, 6, 43, 0], "temp": "30"}
+{"time_stamp": [2017, 2, 12, 19, 29, 48, 6, 43, 0], "temp": "30"}
+{"temp": "30", "time_stamp": [2017, 2, 12, 19, 31, 45, 6, 43, 0]}
+{"time_stamp": [2017, 2, 12, 19, 32, 51, 6, 43, 0], "temp": "30"}
+{"temp": "30", "time_stamp": [2017, 2, 12, 19, 42, 4, 6, 43, 0]}
+{"temp": "30", "time_stamp": [2017, 2, 12, 19, 42, 26, 6, 43, 0]}
+{"temp": "30", "time_stamp": [2017, 2, 12, 20, 5, 59, 6, 43, 0]}
+{"temp": "30", "time_stamp": "\"2017-02-12T20:17:39.878683\""}
+{"temp": "30", "time_stamp": "2017-02-12 20:30:11.796589"}
+{"time_stamp": "2017-02-12 20:30:23.162829", "temp": "30"}
+{"temp": "30", "time_stamp": "2017-02-12 20:30:51.266278"}
+{"temp": "30", "time_stamp": "2017-02-12 20:31:23.724579"}
+{"temp": "30", "time_stamp": "2017-02-12 20:34:43.917209"}
+{"time_stamp": "2017-02-12 20:36:33.764240", "temp": "30"}
+{"time_stamp": "2017-02-12 20:36:43.566944", "temp": "30"}
+{"time_stamp": "2017-02-12 20:36:58.991163", "temp": "30"}
+{"time_stamp": "2017-02-12 20:49:59.161511", "temp": "30"}
+{"time_stamp": "2017-02-12 20:50:15.447602", "temp": "30"}
+{"time_stamp": "2017-02-12 20:50:51.551292", "temp": "30"}
+{"temp": "30", "time_stamp": "2017-02-12 20:52:31.342326"}
+{"temp": "30", "time_stamp": "2017-02-12 20:53:10.590835"}
+{"temp": "30", "time_stamp": "2017-02-12 20:53:55.102191"}
+{"temp": "30", "time_stamp": "2017-02-12 20:54:10.527896"}
+{"temp": "None", "time_stamp": "2017-02-13 20:29:15.768132"}
+{"temp": "None", "time_stamp": "2017-02-13 20:29:55.770903", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:05.776288", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:15.781706", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:25.787874", "last_email_sent_time": null}
+{"temp": "None", "time_stamp": "2017-02-13 20:30:35.795107", "last_email_sent_time": null}
+{"last_email_sent_time": null, "time_stamp": "2017-02-13 20:33:01.155214", "temp": "None"}
+{"last_email_sent_time": null, "time_stamp": "2017-02-13 20:33:11.162810", "temp": "None"}
+{"last_email_sent_time": null, "time_stamp": "2017-02-13 20:33:21.168913", "temp": "None"}
+{"time_stamp": "2017-02-13 20:33:38.112704", "temp": "None", "last_email_sent_time": null}
+{"time_stamp": "2017-02-13 20:34:21.915101", "temp": "None", "last_email_sent_time": null}
+{"temp": "50", "last_email_sent_time": null, "time_stamp": "2017-02-13 20:35:14.111381"}
+{"temp": "50", "last_email_sent_time": null, "time_stamp": "2017-02-13 20:35:26.945347"}
+{"temp": "50", "last_email_sent_time": null, "time_stamp": "2017-02-13 20:35:38.176601"}
