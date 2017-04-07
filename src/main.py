@@ -1,8 +1,5 @@
-from email_alerter import *
-from temp_recorded import *
-from file_scanner import *
-import config
-
+from src.file_scanner import *
+from src.temp_recorded import *
 
 if __name__ == '__main__':
     """
