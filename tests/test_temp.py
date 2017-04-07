@@ -10,7 +10,7 @@ class TestTempRecorder(unittest.TestCase):
         test_temp = 30
         cntl_temp = RecordTemp(test_temp).get_temp()
 
-        self.assertEquals(cntl_temp, test_temp)
+        self.assertEqual(cntl_temp, test_temp)
 
 
     def test_formatout_put(self):
